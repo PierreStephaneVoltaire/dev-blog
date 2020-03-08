@@ -23,6 +23,16 @@
     },
     "api-interfaces": {
       "tags": []
+    },
+    "content-admin": {
+      "tags": []
+    },
+    "content-admin-e2e": {
+      "tags": [],
+      "implicitDependencies": ["content-admin"]
+    },
+    "auth-service": {
+      "tags": []
     }
   }
 }
