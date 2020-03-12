@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'custom-card',
+  selector: 'pvoltaire-custom-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })

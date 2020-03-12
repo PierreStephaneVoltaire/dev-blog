@@ -34,7 +34,9 @@ yarn-error.log
 testem.log
 /typings
 yarn.lock
-package.lock.json
+package-lock.json
 # System Files
 .DS_Store
 Thumbs.db
+.env
+.localstack
