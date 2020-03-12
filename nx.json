@@ -33,6 +33,9 @@
     },
     "auth-service": {
       "tags": []
+    },
+    "document-storage": {
+      "tags": []
     }
   }
 }
