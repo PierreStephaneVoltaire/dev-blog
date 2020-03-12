@@ -1,6 +1,28 @@
 /*
  * Remove template code below
  */
+.contentCard{
+  width: 15vw;
+  height: 35vh;
+}
+.box {
+  display: flex;
+  flex-flow: column;
+  min-height: 25vh;
+}
+
 .full{
   width: 100%;
+}
+.half-full{
+  width: 50%;
+}
+.extraPadding{
+  margin-bottom: 48px;
+
+}
+.flex-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
