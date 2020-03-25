@@ -48,6 +48,6 @@ jobs:
         with:
           username: ${{secrets.api_host_user}}
           host: ${{secrets.api_host}}
-          script: ./deployment.sh
+          script: ls
           key: ${{ secrets.SSH_DEPLOYMENT_KEY }}
 
