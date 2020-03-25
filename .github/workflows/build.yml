@@ -8,7 +8,7 @@ on:
   push:
     branches: [ master,feature/*,develop]
   pull_request:
-    branches: [ master ]
+    branches: [ master,develop ]
 
 jobs:
   install:
@@ -27,23 +27,26 @@ jobs:
       - name: Install
         run: npm install
   lint:
+    needs: install
     runs-on: ubuntu-latest
     steps:
       - name: Lint
         run: npm run lint
   test:
+    needs: lint
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/develop'
     steps:
       - name: Test
         run: npm run test
   build:
+    needs: test
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
       - name: Build
         run: npm run build
   deploy:
+    needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
