@@ -27,7 +27,7 @@ The architecture right now, is a bit of a mess, so it is subject to change
 
 ---
 
-##Features
+## Features
 * User login/sign up
     * basic
     * social media
@@ -36,7 +36,7 @@ The architecture right now, is a bit of a mess, so it is subject to change
 * Post versioning : Draft/updates
 * Comments
 
-##link
+## link
 http://despairdrivendevelopment.net/
 
 ---
