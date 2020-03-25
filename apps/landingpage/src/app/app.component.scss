@@ -1,26 +1,130 @@
 /*
  * Remove template code below
  */
-.contentCard{
-  width: 15vw;
-  height: 35vh;
+.blog-navbar {
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+  background: #FFFFFF;
+  border-radius: 10px;
 }
+
+
+.blog-title {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 48px;
+  /* identical to boxmin-height: ;, or 100% */
+  text-align: center;
+  color: #000000;
+}
+
+.blog-card {
+  height: 515px;
+  background: #FFFFFF;
+  border-radius: 30px;
+}
+
+.search-button {
+
+  width: 13.75%;
+  min-height: 50px;
+  left: 75.63%;
+  top: 0;
+
+  background: #22215B;
+  border-radius: 16px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 129%;
+  line-height: 28px;
+  color: #FFFFFF;
+}
+
+.blog-post-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 75px;
+  padding-top: 75px;
+
+  min-height: 73px;
+  left: 8.82%;
+  top: 36%;
+}
+
+.search-bar {
+  width: 65%;
+  min-height: 53px;
+  left: 0px;
+  top: 0;
+
+  background: #FFFFFF;
+  border-radius: 20px;
+}
+
+.blog-sub-title {
+  padding-bottom: 42px;
+  padding-top: 40px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 48px;
+  line-height: 56px;
+  text-align: center;
+
+  color: #000000;
+
+}
+
+.bread {
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 25px;
+  line-height: 48px;
+  text-align: center;
+  display: flex;
+  padding-left: 5%;
+  justify-content: flex-start;
+  color: #22215B;
+}
+
+.contentCard {
+  width: 15vw;
+  min-height: 35vh;
+}
+
 .box {
   display: flex;
   flex-flow: column;
   min-height: 25vh;
 }
 
-.full{
+.full {
   width: 100%;
 }
-.half-full{
+
+.half-full {
   width: 50%;
 }
-.extraPadding{
+
+.extraPadding {
   margin-bottom: 48px;
 
 }
+
 .flex-container {
   align-items: center;
   display: flex;
