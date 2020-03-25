@@ -29,7 +29,7 @@ The architecture right now, is a bit of a mess, so it is subject to change
 
 ## Features
 * User login/sign up
-    * basic
+    * Basic
     * social media
 * Content management and creation
 * Post templates creation and selection
