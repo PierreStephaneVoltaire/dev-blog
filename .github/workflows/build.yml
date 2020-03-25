@@ -42,3 +42,11 @@ jobs:
             --recursive \
             --region ap-northeast-2 \
             dist/apps/landingpage s3://despairdrivendevelopment.net
+      - name: Deploy api server
+        uses: appleboy/ssh-action@master
+        env:
+          USERNAME: ${{secrets.api_host_user}}
+          HOST: ${{secrets.api_host}}
+          SCRIPT: ~/api-deployment.sh
+          KEY: ${{ secrets.SSH_DEPLOYMENT_KEY }}
+
