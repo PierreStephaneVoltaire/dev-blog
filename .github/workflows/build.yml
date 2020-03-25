@@ -6,12 +6,12 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ master,feature/*,develop]
   pull_request:
     branches: [ master ]
 
 jobs:
-  build:
+  install:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
@@ -24,15 +24,29 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
-
       - name: Install
         run: npm install
+  lint:
+    runs-on: ubuntu-latest
+    steps:
       - name: Lint
         run: npm run lint
+  test:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/develop'
+    steps:
       - name: Test
         run: npm run test
+  build:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
       - name: Build
         run: npm run build
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    steps:
       - name: Deploy
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -44,9 +58,9 @@ jobs:
             dist/apps/landingpage s3://despairdrivendevelopment.net
       - name: Deploy api server
         uses: appleboy/ssh-action@master
-        env:
-          USERNAME: ${{secrets.api_host_user}}
-          HOST: ${{secrets.api_host}}
-          SCRIPT: ~/api-deployment.sh
-          KEY: ${{ secrets.SSH_DEPLOYMENT_KEY }}
+        with:
+          username: ${{secrets.api_host_user}}
+          host: ${{secrets.api_host}}
+          script: ~/api-deployment.sh
+          key: ${{ secrets.SSH_DEPLOYMENT_KEY }}
 
