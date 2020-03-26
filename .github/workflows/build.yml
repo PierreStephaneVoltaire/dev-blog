@@ -31,7 +31,11 @@ jobs:
       - name: Test
         run: npm run test
       - name: Build
-        if: github.ref == 'refs/heads/master'
+        if: github.ref == 'refs/hesudo systemctl start docker
+            sudo systemctl enable docker
+            sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
+            docker-compose --versionads/master'
         run: npm run build
       - name: Deploy
         if: github.ref == 'refs/heads/master'
@@ -50,12 +54,13 @@ jobs:
           host: ${{secrets.api_host}}
           key: ${{ secrets.SSH_DEPLOYMENT_KEY }}
           script: |
+
             runContainer () {
-            docker-compose -f api-docker-compose.yml up
+            sudo docker-compose -f api-docker-compose.yml up
             }
 
             checkIfDockerIsInstalled () {
-            docker -v
+            sudo docker -v
             dockerIsInstalled=$?
             docker-compose -v
             if [[ $? != 0 || $dockerIsInstalled != 0 ]]
@@ -67,7 +72,7 @@ jobs:
             sudo systemctl enable docker
             sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
-            docker-compose --version
+            sudo docker-compose --version
              fi
              }
 
@@ -84,7 +89,7 @@ jobs:
             consul -v
             if [ $? != 0 ]
             then
-            export VER="1.6.2"
+            export VER="1.7.1"
             wget https://releases.hashicorp.com/consul/${VER}/consul_${VER}_linux_amd64.zip
             unzip consul_${VER}_linux_amd64.zip
             sudo mv consul /usr/local/bin/
@@ -108,4 +113,3 @@ jobs:
                 cd dev-blog
             fi
             runContainer;
-
