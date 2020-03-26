@@ -31,11 +31,6 @@ jobs:
       - name: Test
         run: npm run test
       - name: Build
-        if: github.ref == 'refs/hesudo systemctl start docker
-            sudo systemctl enable docker
-            sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-            sudo chmod +x /usr/local/bin/docker-compose
-            docker-compose --versionads/master'
         run: npm run build
       - name: Deploy
         if: github.ref == 'refs/heads/master'
