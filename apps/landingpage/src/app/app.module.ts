@@ -19,7 +19,7 @@ import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [AppComponent, PostsComponent, MainCardComponent,ToolbarComponent],
-  imports: [BrowserModule, MatInputModule, HttpClientModule, MatButtonModule, BrowserAnimationsModule, SearchbarModule, MatGridListModule, MatMenuModule, MatIconModule, MatFormFieldModule, MatCardModule],
+  imports: [BrowserModule,SearchbarModule, MatInputModule, HttpClientModule, MatButtonModule, BrowserAnimationsModule, SearchbarModule, MatGridListModule, MatMenuModule, MatIconModule, MatFormFieldModule, MatCardModule],
   providers: [],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

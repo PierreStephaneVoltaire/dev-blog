@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SearchbarComponent } from './searchbar/searchbar.component';
+import { SearchbarComponent } from './searchbar.component';
 
 
 
