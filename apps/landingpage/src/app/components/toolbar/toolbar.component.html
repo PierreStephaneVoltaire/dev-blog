@@ -1,0 +1,33 @@
+<div class="blog-navbar">
+  <div class="grid-container">
+    <div class="grid-row">
+      <div class="blog-menu">
+        <mat-menu #appMenu="matMenu">
+          <button mat-menu-item>Settings</button>
+          <button mat-menu-item>About</button>
+        </mat-menu>
+      </div>
+      <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="blog-title">Despair Driven Development</span>
+    </div>
+    <div class="grid-row">
+      <form class="example-form">
+        <mat-form-field class="search-bar">
+          <mat-icon matPrefix>search</mat-icon>
+
+          <input matInput  >
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="grid-row">
+      <div class="blog-avatar">
+        <button mat-mini-fab disabled aria-label="Example icon button with a home icon">
+          <mat-icon>home</mat-icon>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>

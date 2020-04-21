@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'pvoltaire-custom-card',
+  selector: 'dev-blog-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.css']
 })
-
 export class CardComponent implements OnInit {
 
   constructor() { }

@@ -1,37 +1,14 @@
-<div class="container">
+<div class="content">
 
-  <div class=" blog-navbar column col-12">
-    <span class="blog-title">Despair Driven Development</span>
-  </div>
+<blog-toolbar></blog-toolbar>
 
-  <div class="bread  column col-12"><a href="#">Home</a></div>
-  <div class="blog-sub-title column col-12">
-    <span>Please stop deploying to production without testing...</span>
-  </div>
-  <div class="search column col-12">
-
-    <input type="text" class="search-bar">
-
-    <button class="search-button">Search</button>
-  </div>
-  <div class="blog-post-section column col-12">
-
-    <div class="blog-card column  col-3">
-
-    </div>
-
-
-    <div class="blog-card column  col-3">
-
-    </div>
-
-
-    <div class="blog-card column  col-3">
-
-    </div>
-
-  </div>
+<blog-main-card>
+<div class="view-btns">
+  <button mat-raised-button class="full">View More</button>
+  <button mat-button class="full">Autoscroll</button>
+</div>
+</blog-main-card>
 
 
 </div>
-<!-- <div>Message: {{ hello$ | async | json }}</div> -->
+

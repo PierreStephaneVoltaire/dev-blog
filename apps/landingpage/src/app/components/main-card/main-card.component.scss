@@ -1,0 +1,24 @@
+.main-card {
+  background: whitesmoke;
+  border-radius: 10px;
+  width: 95%;
+  min-width: 720px;
+  z-index: auto;
+  min-height: calc(100vh - 140px);
+  margin-top: 48px;
+}
+
+.posts{
+  min-height: calc(100vh - 264px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 24px;
+}
+.post-card{
+  width: 392px;
+  max-height: 288px;
+  overflow: hidden;
+  padding: 24px;
+}

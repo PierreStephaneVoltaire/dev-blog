@@ -10,7 +10,7 @@
       },
       "root": "apps/landingpage",
       "sourceRoot": "apps/landingpage/src",
-      "prefix": "pvoltaire",
+      "prefix": "dev-blog",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -25,7 +25,11 @@
               "apps/landingpage/src/favicon.ico",
               "apps/landingpage/src/assets"
             ],
-            "styles": ["apps/landingpage/src/styles.scss"],
+            "styles": [
+
+
+              "apps/landingpage/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -84,7 +88,10 @@
               "apps/landingpage/tsconfig.app.json",
               "apps/landingpage/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/landingpage/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/landingpage/**"
+            ]
           }
         },
         "test": {
@@ -119,8 +126,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/landingpage-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/landingpage-e2e/**"]
+            "tsConfig": [
+              "apps/landingpage-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/landingpage-e2e/**"
+            ]
           }
         }
       }
@@ -138,7 +150,9 @@
             "outputPath": "dist/apps/api",
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"]
+            "assets": [
+              "apps/api/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -167,7 +181,10 @@
               "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/api/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/api/**"
+            ]
           }
         },
         "test": {
@@ -193,7 +210,10 @@
               "libs/api-interfaces/tsconfig.lib.json",
               "libs/api-interfaces/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/api-interfaces/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/api-interfaces/**"
+            ]
           }
         },
         "test": {
@@ -224,7 +244,9 @@
               "apps/content-admin/src/favicon.ico",
               "apps/content-admin/src/assets"
             ],
-            "styles": ["apps/content-admin/src/styles.scss"],
+            "styles": [
+              "apps/content-admin/src/styles.scss"
+            ],
             "scripts": [],
             "webpackConfig": "@nrwl/react/plugins/webpack"
           },
@@ -272,7 +294,10 @@
               "apps/content-admin/tsconfig.app.json",
               "apps/content-admin/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/content-admin/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/content-admin/**"
+            ]
           }
         },
         "test": {
@@ -306,8 +331,13 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/content-admin-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/content-admin-e2e/**"]
+            "tsConfig": [
+              "apps/content-admin-e2e/tsconfig.e2e.json"
+            ],
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/content-admin-e2e/**"
+            ]
           }
         }
       }
@@ -325,7 +355,9 @@
             "outputPath": "dist/apps/auth-service",
             "main": "apps/auth-service/src/main.ts",
             "tsConfig": "apps/auth-service/tsconfig.app.json",
-            "assets": ["apps/auth-service/src/assets"]
+            "assets": [
+              "apps/auth-service/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -354,7 +386,10 @@
               "apps/auth-service/tsconfig.app.json",
               "apps/auth-service/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/auth-service/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!apps/auth-service/**"
+            ]
           }
         },
         "test": {
@@ -380,7 +415,10 @@
               "libs/document-storage/tsconfig.lib.json",
               "libs/document-storage/tsconfig.spec.json"
             ],
-            "exclude": ["**/node_modules/**", "!libs/document-storage/**"]
+            "exclude": [
+              "**/node_modules/**",
+              "!libs/document-storage/**"
+            ]
           }
         },
         "test": {

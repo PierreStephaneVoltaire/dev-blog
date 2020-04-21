@@ -1,0 +1,48 @@
+.blog-navbar {
+  background: whitesmoke;
+  border-radius: 10px;
+  width: 95%;
+  min-width: 720px;
+  position: static;
+  z-index: auto;
+  height: 86px;
+  padding-top: 6px;
+}
+
+.blog-title {
+  padding-left: 48px;
+  text-align: center;
+  max-width: 90px;
+  font-family: Roboto;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 15px;
+  /* or 97% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #000000;
+}
+.blog-avatar{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 24px;
+}
+.grid-row{
+  align-items: center;
+  display: flex;
+  height: 86px;
+  align-items: center;
+  padding: 0px 24px;
+}
+.search-bar {
+  min-width: 528px;
+}
