@@ -20,8 +20,11 @@
   padding: 24px;
 }
 .post-card{
+  max-width: 492px;
   width: 492px;
   height: 288px;
+  max-height: 288px;
+
   overflow: hidden;
 margin: 12px;
 }

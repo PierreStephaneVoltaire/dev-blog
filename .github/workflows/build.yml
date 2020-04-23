@@ -50,6 +50,7 @@ jobs:
           key: ${{ secrets.SSH_DEPLOYMENT_KEY }}
           script: |
 
+
             runContainer () {
             sudo docker-compose -f api-docker-compose.yml up
             }
@@ -68,8 +69,8 @@ jobs:
             sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
             sudo docker-compose --version
-             fi
-             }
+            fi
+            }
 
             checkIfGitIsInstalled(){
             git --version
@@ -102,9 +103,9 @@ jobs:
             checkIfDockerIsInstalled;
             if [ -d "./dev-blog" ]
             then
-                cd dev-blog
+            cd dev-blog
             else
-                git clone https://github.com/PierreStephaneVoltaire/dev-blog.git
-                cd dev-blog
+            git clone https://github.com/PierreStephaneVoltaire/dev-blog.git
+            cd dev-blog
             fi
             runContainer;
