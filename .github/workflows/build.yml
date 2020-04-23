@@ -32,6 +32,13 @@ jobs:
         run: npm run test
       - name: Build
         run: npm run build
+      - name: where am i
+        run: ls
+      - name: Upload build
+        uses: actions/upload-artifact@v1
+        with:
+          name: build
+          path: dist/api
       - name: Deploy
         if: github.ref == 'refs/heads/master'
         env:
@@ -49,6 +56,6 @@ jobs:
           remote: api
           host: ${{secrets.api_host}}
           username: ${{secrets.api_host_user}}
-          privatekey: ${{ secrets.SSH_DEPLOYMENT_KEY }}
+          privateKey: ${{ secrets.SSH_DEPLOYMENT_KEY }}
           recursive: true
 
