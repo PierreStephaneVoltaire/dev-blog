@@ -52,7 +52,7 @@ jobs:
 
 
             runContainer () {
-            sudo docker-compose -f api-docker-compose.yml up
+            sudo docker-compose -f api-docker-compose.yml up -d
             }
 
             checkIfDockerIsInstalled () {
