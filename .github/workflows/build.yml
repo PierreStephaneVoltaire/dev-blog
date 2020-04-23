@@ -49,6 +49,6 @@ jobs:
           remote: api
           host: ${{secrets.api_host}}
           username: ${{secrets.api_host_user}}
-          privatekey: ${{ secrets.SSH_DEPLOYMENT_KEY }}
+          privateKey: ${{ secrets.SSH_DEPLOYMENT_KEY }}
           recursive: true
 
