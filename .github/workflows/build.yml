@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Checkout source code
         uses: actions/checkout@master
-      - name: Cache node modules
+      - name: Cache node modules0
         uses: actions/cache@v1
         with:
           path: node_modules
@@ -43,14 +43,12 @@ jobs:
             --region ap-northeast-2 \
             dist/apps/landingpage s3://despairdrivendevelopment.net
       - name: Deploy api server
-        env:
-          remote_host: ${{secrets.api_host}}
-          remote_user: ${{secrets.api_host_user}}
-          remote_key: ${{ secrets.SSH_DEPLOYMENT_KEY }}
-          local_dir: "dist/api"
-          remote_dir: "~/api/"
-        run: |
-          mkdir ~/.ssh
-          echo "$remote_key" > ~/.ssh/gh_actions_key
-          chmod 600 ~/.ssh/gh_actions_key
-          rsync -avzr --delete -e "ssh  -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
+        uses: garygrossgarten/github-action-scp@release
+        with:
+          local: dist/apps/api
+          remote: api
+          host: ${{secrets.api_host}}
+          username: ${{secrets.api_host_user}}
+          privatekey: ${{ secrets.SSH_DEPLOYMENT_KEY }}
+          recursive: true
+
