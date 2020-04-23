@@ -47,7 +47,7 @@ jobs:
           remote_host: ${{secrets.api_host}}
           remote_user: ${{secrets.api_host_user}}
           remote_key: ${{ secrets.SSH_DEPLOYMENT_KEY }}
-          local_dir: "dist/api"
+          local_dir: "dist/apps/api"
           remote_dir: "~/api/"
         run: |
           mkdir ~/.ssh
