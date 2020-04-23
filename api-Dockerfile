@@ -4,8 +4,8 @@ ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /usr/app
-RUN npm i -g  typescript @angular/cli @nrwl/cli
+RUN npm i -g  nodemon yarn
 COPY package*.json ./
 COPY . .
-RUN npm i
+RUN yarn
 

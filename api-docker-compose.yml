@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: api-Dockerfile
-    command: nx run api:serve
+    command: nodemon main.js
     volumes:
       - .:/usr/app/
       - /usr/app/node_modules

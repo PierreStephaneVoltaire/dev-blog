@@ -9,7 +9,6 @@
     "start:server": "node dist/apps/api/main",
     "build": "ng build",
     "build:api": "ng build api",
-
     "test": "ng test",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e",
