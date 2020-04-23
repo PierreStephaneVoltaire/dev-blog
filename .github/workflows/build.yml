@@ -43,20 +43,14 @@ jobs:
             --region ap-northeast-2 \
             dist/apps/landingpage s3://despairdrivendevelopment.net
       - name: Deploy api server
-        uses: appleboy/ssh-action@master
-        with:
-          username: ${{secrets.api_host_user}}
-          host: ${{secrets.api_host}}
-          key: ${{ secrets.SSH_DEPLOYMENT_KEY }}
-      - name: build and deploy build
-          env:
-            remote_host: ${{secrets.api_host}}
-            remote_user: ${{secrets.api_host_user}}
-            remote_key: ${{ secrets.SSH_DEPLOYMENT_KEY }}
-            local_dir: "dist/api"
-            remote_dir: "~/api/"
-          run: |
-            mkdir ~/.ssh
-            echo "$remote_key" > ~/.ssh/gh_actions_key
-            chmod 600 ~/.ssh/gh_actions_key
-            rsync -avzr --delete -e "ssh  -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
+        env:
+          remote_host: ${{secrets.api_host}}
+          remote_user: ${{secrets.api_host_user}}
+          remote_key: ${{ secrets.SSH_DEPLOYMENT_KEY }}
+          local_dir: "dist/api"
+          remote_dir: "~/api/"
+        run: |
+          mkdir ~/.ssh
+          echo "$remote_key" > ~/.ssh/gh_actions_key
+          chmod 600 ~/.ssh/gh_actions_key
+          rsync -avzr --delete -e "ssh  -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
