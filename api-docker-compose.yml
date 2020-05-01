@@ -3,7 +3,7 @@ services:
   api:
     build:
       context: .
-      dockerfile: api-Dockerfile
+      dockerfile: Dockerfile
     command: nodemon main.js
     volumes:
       - .:/usr/app/

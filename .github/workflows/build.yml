@@ -37,7 +37,7 @@ jobs:
       - name: add package.json and locks in api build
         run: cp ./package*.json yarn* ./dist/apps/api
       - name: add docker related files to build dir
-        run: cp api-Dockerfile api-docker-compose.yml ./dist/apps/api
+        run: cp Dockerfile api-docker-compose.yml ./dist/apps/api
       - name: Deploy
         if: github.ref == 'refs/heads/master'
         env:

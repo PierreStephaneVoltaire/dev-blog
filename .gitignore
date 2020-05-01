@@ -16,14 +16,20 @@
 *.launch
 .settings/
 *.sublime-workspace
-
+/**/*.pub
+/**/*.pem
+/**/aws
+/.terraform
 # IDE - VSCode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-
+.terraform
+terraform.*
+aws
+aws.*
 # misc
 /.sass-cache
 /connect.lock
