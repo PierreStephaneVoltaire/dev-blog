@@ -37,7 +37,7 @@ jobs:
       - name: add package.json and locks in api build
         run: cp ./package*.json yarn* ./dist/apps/api
       - name: add docker related files to build dir
-        run: cp api-Dockerfile api-docker-compose.yml ./dist/apps/api
+        run: cp Dockerfile api-docker-compose.yml ./dist/apps/api
       - name: Deploy
         if: github.ref == 'refs/heads/master'
         env:
@@ -48,41 +48,3 @@ jobs:
             --recursive \
             --region ap-northeast-2 \
             dist/apps/landingpage s3://despairdrivendevelopment.net
-      - name: send api build to remote server
-        uses: garygrossgarten/github-action-scp@release
-        with:
-          local: ./dist/apps/api
-          remote: api
-          host: ${{secrets.api_host}}
-          username: ${{secrets.api_host_user}}
-          privateKey: ${{ secrets.SSH_DEPLOYMENT_KEY }}
-          recursive: true
-      - name: Deploy api server
-        uses: appleboy/ssh-action@master
-        with:
-          username: ${{secrets.api_host_user}}
-          host: ${{secrets.api_host}}
-          key: ${{ secrets.SSH_DEPLOYMENT_KEY }}
-          script: |
-            runContainer () {
-            sudo docker-compose -f api-docker-compose.yml up -d
-            }
-            checkIfDockerIsInstalled () {
-            sudo docker -v
-            dockerIsInstalled=$?
-            docker-compose -v
-            if [[ $? != 0 || $dockerIsInstalled != 0 ]]
-            then
-            sudo apt-get update
-            sudo apt-get remove docker docker-engine docker.io
-            sudo apt install docker.io
-            sudo systemctl start docker
-            sudo systemctl enable docker
-            sudo curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-            sudo chmod +x /usr/local/bin/docker-compose
-            sudo docker-compose --version
-             fi
-             }
-            cd api
-            checkIfDockerIsInstalled;
-            runContainer;
