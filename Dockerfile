@@ -8,4 +8,6 @@ RUN npm i
 COPY . .
 RUN npm run build api
 FROM node:latest as serve
-RUN nodemon dist/apps/api/main.js
+COPY --from=builder /usr/app/node_modules node_modules
+COPY --from=builder /usr/app/dist dist
+RUN node dist/apps/api/main.js
