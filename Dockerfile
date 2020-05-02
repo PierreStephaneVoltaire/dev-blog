@@ -10,4 +10,4 @@ RUN npm run build api
 FROM node:latest as serve
 COPY --from=builder /usr/app/node_modules node_modules
 COPY --from=builder /usr/app/dist dist
-RUN node dist/apps/api/main.js
+CMD node dist/apps/api/main.js
