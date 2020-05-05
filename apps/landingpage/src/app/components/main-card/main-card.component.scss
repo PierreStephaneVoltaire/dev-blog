@@ -11,7 +11,7 @@
   display: inline-block;
 }
 
-.posts{
+.posts {
   min-height: calc(100vh - 264px);
   display: flex;
   flex-direction: row;
@@ -19,12 +19,11 @@
   justify-content: space-evenly;
   padding: 24px;
 }
-.post-card{
-  max-width: 492px;
-  width: 492px;
-  height: 288px;
-  max-height: 288px;
 
+.post-card {
+  width: calc(100vw / 4);
+  height: calc(100vh / 3.5);
   overflow: hidden;
-margin: 12px;
+  margin: 12px;
+
 }

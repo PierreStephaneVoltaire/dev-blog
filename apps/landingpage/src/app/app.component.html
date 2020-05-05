@@ -1,13 +1,13 @@
 <div class="content">
 
-<blog-toolbar></blog-toolbar>
+  <blog-searchbar></blog-searchbar>
 
-<blog-main-card>
-<div class="view-btns">
-  <button mat-raised-button class="full">View More</button>
-  <button mat-button class="full">Autoscroll</button>
-</div>
-</blog-main-card>
+  <blog-posts>
+    <div class="view-btns">
+      <button (click)="notYetSupported()" class="full" mat-raised-button>View More</button>
+      <button (click)="notYetSupported()" class="full" mat-button>Autoscroll</button>
+    </div>
+  </blog-posts>
 
 
 </div>
