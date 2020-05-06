@@ -24,25 +24,25 @@ describe('PostCardComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [PostCardComponent],
-      imports:[
-      MatInputModule,
-      HttpClientModule,
+      imports: [
+        MatInputModule,
+        HttpClientModule,
         StoreModule.forRoot({}),
         EffectsModule.forRoot([]),
 
         StoreModule.forFeature(fromPosts.POSTS_FEATURE_KEY, fromPosts.reducer),
-      EffectsModule.forFeature([PostsEffects]),
-      MatButtonModule,
-      MatGridListModule,
-      MatMenuModule,
-      MatIconModule,
-      MatFormFieldModule,
-      MatCardModule,
-      MatChipsModule,
-      MatRippleModule],
-    providers: [PostsFacade]
+        EffectsModule.forFeature([PostsEffects]),
+        MatButtonModule,
+        MatGridListModule,
+        MatMenuModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatCardModule,
+        MatChipsModule,
+        MatRippleModule],
+      providers: [PostsFacade]
 
-  })
+    })
       .compileComponents();
   }));
 

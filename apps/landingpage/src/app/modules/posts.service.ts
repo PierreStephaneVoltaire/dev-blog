@@ -13,10 +13,10 @@ export class PostsService {
   }
 
   getPosts(): Observable<PostsEntity[]> {
-    return this.http.get<PostsEntity[]>('http://15.222.175.172:3333/api/post').pipe(map(entities=>{
-      return entities.map(ent=> Object.assign({id:ent.PostID},ent)
-       )
-    }))
+    return this.http.get<PostsEntity[]>('http://prod.api.despairdrivendevelopment.net/api/post').pipe(map(entities => {
+      return entities.map(ent => Object.assign({ id: ent.PostID }, ent)
+      );
+    }));
   }
 
 }

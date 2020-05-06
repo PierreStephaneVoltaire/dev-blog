@@ -24,7 +24,7 @@ describe('PostsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PostsComponent],imports:[
+      declarations: [PostsComponent], imports: [
         MatInputModule,
         HttpClientModule,
         StoreModule.forRoot({}),
