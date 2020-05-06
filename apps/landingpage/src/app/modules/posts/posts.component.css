@@ -1,0 +1,36 @@
+.main-card {
+  background: whitesmoke;
+  border-radius: 10px;
+  width: calc(100vw - 5%);
+  min-width: 344px;
+  z-index: auto;
+  min-height: calc(100vh - 140px);
+  margin-top: 48px;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  display: inline-block;
+}
+
+.posts {
+  min-height: calc(100vh - 264px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 24px;
+}
+
+.post-card {
+  width: calc(100vw / 4);
+  height: calc(100vh / 3.5);
+  overflow: hidden;
+  margin: 12px;
+
+}
+
+.text-date {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}

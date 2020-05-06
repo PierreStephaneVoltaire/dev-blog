@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('posts')
 export class PostEntity {
@@ -17,8 +17,9 @@ export class PostEntity {
   @Column({ default: true })
   DRAFT: boolean;
   @Column()
-  PostContent: string;  @Column()
-  @Column({ type:"json" })
+  PostContent: string;
+  @Column()
+  @Column({ type: 'json' })
   Meta: any;
 
 }

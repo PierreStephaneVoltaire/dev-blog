@@ -10,21 +10,21 @@ import { PostModule } from './post/post.module';
   imports: [
 
     TypeOrmModule.forRoot({
-    type: 'mysql',
-    host: process.env.db_host,
-    port: 3306,
-    username: process.env.db_username,
-    password: process.env.db_password,
-    database: process.env.db_database,
-    entities: [PostEntity],
-    synchronize: true,
-  }),
+      type: 'mysql',
+      host: process.env.db_host,
+      port: 3306,
+      username: process.env.db_username,
+      password: process.env.db_password,
+      database: process.env.db_database,
+      entities: [PostEntity],
+      synchronize: true
+    }),
 
-    PostModule,
+    PostModule
 
 
   ],
-  controllers: [ PostController],
+  controllers: [PostController],
   providers: [PostService]
 })
 export class AppModule {

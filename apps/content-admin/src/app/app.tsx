@@ -5,7 +5,7 @@ import './app.scss';
 import { ReactComponent as Logo } from './logo.svg';
 import star from './star.svg';
 
-import { Route, Link } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 
 export const App = () => {
   /*
@@ -16,7 +16,7 @@ export const App = () => {
   return (
     <div className="app">
       <header className="flex">
-        <Logo width="75" height="75" />
+        <Logo width="75" height="75"/>
         <h1>Welcome to content-admin!</h1>
       </header>
       <main>
@@ -31,7 +31,7 @@ export const App = () => {
             {' '}
             If you like Nx, please give it a star:
             <div className="github-star-badge">
-              <img src={star} className="material-icons" alt="" />
+              <img src={star} className="material-icons" alt=""/>
               Star
             </div>
           </a>
@@ -104,9 +104,9 @@ nx affected:e2e
       {/* START: routes */}
       {/* These routes and navigation have been generated for you */}
       {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
+      <br/>
+      <hr/>
+      <br/>
       <div role="navigation">
         <ul>
           <li>

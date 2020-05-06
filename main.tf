@@ -1,12 +1,32 @@
+
 terraform {
   required_version = ">= 0.12"
+  backend "s3" {
+    bucket = "ddd-state"
+    key    =  "terraform.tfstate"
+    region ="ca-central-1"
+    encrypt        = true
+  }
 }
 
 locals {
-  app = "ddd-api"
+  app = "prod.api"
   region = "ca-central-1"
   keyname = "aws"
+  domain = "despairdrivendevelopment.net"
 }
+variable "aws_access_key_id"{}
+variable "aws_secret_access_key" {}
+variable "region" {}
+variable "db_type" {}
+variable "db_host" {}
+variable "db_port"{}
+variable "db_username"{}
+variable "db_password"{}
+variable "db_database"{}
+variable "api_port"{}
+
+
 
 provider "aws" {
   region = "ca-central-1"
@@ -23,7 +43,7 @@ resource "null_resource" "docker_build" {
   }
 
   provisioner "local-exec" {
-    command = "docker build . -t devblog"
+    command = "docker build  -t devblog --build-arg api_port=${var.api_port} ."
   }
 
   provisioner "local-exec" {
@@ -32,19 +52,28 @@ resource "null_resource" "docker_build" {
 
   provisioner "local-exec" {
     when = destroy
-    command = "docker rmi devblog"
+    command = "docker rmi devblog --force"
   }
 }
 
 resource "aws_lightsail_key_pair" "lightsail_key_pair" {
-  name = "awskey"
+  name = "aws_key"
   public_key = tls_private_key.aws.public_key_openssh
+}
+resource "aws_lightsail_static_ip_attachment" "app" {
+  static_ip_name = aws_lightsail_static_ip.app.name
+  instance_name  = aws_lightsail_instance.app.name
+}
+
+resource "aws_lightsail_static_ip" "app" {
+  name = "${local.app}ip"
 }
 
 resource "aws_lightsail_instance" "app" {
   name = local.app
   availability_zone = "${local.region}b"
   blueprint_id = "ubuntu_18_04"
+
   bundle_id = "nano_2_0"
   key_pair_name = aws_lightsail_key_pair.lightsail_key_pair.name
   provisioner "remote-exec" {
@@ -86,7 +115,10 @@ resource "null_resource" "docker_deploy" {
     destination = "devblog.tar.gz"
   }
   provisioner "remote-exec" {
-    script = "deployment.sh"
+    inline = [
+    "sudo docker load --input devblog.tar.gz",
+      "sudo docker run -d -p ${var.api_port}:${var.api_port} --env aws_access_key_id=${var.aws_access_key_id} --env aws_secret_access_key=${var.aws_secret_access_key}   --env region=${var.region} --env db_type=${var.db_type}  --env db_host=${var.db_host} --env db_port=${var.db_port} --env db_username=${var.db_username} --env db_password=${var.db_password} --env  db_database=${var.db_database} --env api_port=${var.api_port} devblog"
+    ]
   }
 }
 
@@ -96,6 +128,75 @@ resource "local_file" "aws_key" {
   sensitive_content = tls_private_key.aws.private_key_pem
 }
 
+resource "null_resource" "export_ip" {
+
+  provisioner "local-exec" {
+    command = "export api_host=${aws_lightsail_static_ip.app.ip_address}:${var.api_port}"
+  }
+}
+
+resource "aws_s3_bucket" "app" {
+  bucket = "${local.app}.${local.domain}"
+  acl    = "private"
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm     = "AES256"
+      }
+    }
+  }
+}
+
+data "aws_route53_zone" "zone" {
+  name         = "${local.domain}."
+}
+
+resource "aws_route53_record" "app" {
+  zone_id = data.aws_route53_zone.zone.zone_id
+  name    = "${local.app}.${data.aws_route53_zone.zone.name}"
+  type    = "A"
+  ttl     = "300"
+  records = [aws_lightsail_static_ip.app.ip_address]
+}
+
+
+resource "aws_iam_user" "app" {
+  name = local.app
+}
+
+resource "aws_iam_access_key" "app" {
+  user    = aws_iam_user.app.name
+}
+
+resource "aws_iam_user_policy" "app" {
+  name = local.app
+  user = aws_iam_user.app.name
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": ["s3:ListBucket"],
+      "Resource": ["arn:aws:s3:::${local.app}.${local.domain}"]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:GetObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": ["arn:aws:s3:::${local.app}.${local.domain}/*"]
+    }
+  ]
+}
+EOF
+}
+
 output "ip" {
   value = aws_lightsail_instance.app.public_ip_address
 }
+

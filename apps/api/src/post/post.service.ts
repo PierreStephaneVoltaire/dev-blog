@@ -6,10 +6,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 @Injectable()
 export class PostService {
   constructor(
-
     @InjectRepository(PostEntity)
-    private postsRepository: Repository<PostEntity>,
-  ) {}
+    private postsRepository: Repository<PostEntity>
+  ) {
+  }
 
   findAll(): Promise<PostEntity[]> {
     return this.postsRepository.find();

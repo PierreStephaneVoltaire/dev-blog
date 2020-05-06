@@ -1,0 +1,13 @@
+[
+  {
+    PostID: 2,
+    PostTitle: "",
+    PostSubTitle: "",
+    PostThumbNailImage: null,
+    CreatedDate: null,
+    UpdateDate: null,
+    DRAFT: false,
+    PostContent: "",
+    Meta: null
+  }
+]

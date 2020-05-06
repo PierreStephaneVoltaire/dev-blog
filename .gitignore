@@ -7,7 +7,7 @@
 
 # dependencies
 /node_modules
-
+terraform.tfvars
 # IDEs and editors
 /.idea
 .project
@@ -27,7 +27,7 @@
 !.vscode/launch.json
 !.vscode/extensions.json
 .terraform
-terraform.*
+terraform.tfvars
 aws
 aws.*
 # misc

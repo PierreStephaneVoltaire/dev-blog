@@ -1,7 +1,7 @@
 .blog-navbar {
   background: whitesmoke;
   border-radius: 10px;
-  width: 95%;
+  width: calc(100vw - 5%);
   min-width: 720px;
   position: static;
   z-index: auto;
@@ -24,7 +24,8 @@
   text-align: center;
   color: #000000;
 }
-.blog-avatar{
+
+.blog-avatar {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -36,13 +37,15 @@
   grid-template-columns: auto auto auto;
   gap: 24px;
 }
-.grid-row{
+
+.grid-row {
   align-items: center;
   display: flex;
   height: 86px;
   align-items: center;
   padding: 0px 24px;
 }
+
 .search-bar {
   min-width: 528px;
 }
