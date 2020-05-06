@@ -3,6 +3,7 @@
  */
 export interface PostsEntity {
   id: string | number
+  PostID?:string|number
   PostTitle: string
   PostSubTitle: string
   PostThumbNailImage: string

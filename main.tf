@@ -1,43 +1,16 @@
 
-
-
-resource "aws_s3_bucket" "ddd" {
-  bucket = "ddd-state"
-  region = "us-east-1"
-  versioning {
-    enabled = true
-  }
-  server_side_encryption_configuration {
-    rule {
-      apply_server_side_encryption_by_default {
-        sse_algorithm = "AES256"
-      }
-    }
-  }
-}
-resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "locks"
-  billing_mode = "PAY_PER_REQUEST"
-  hash_key     = "LockID"
-  attribute {
-    name = "LockID"
-    type = "S"
-  }
-}
 terraform {
   required_version = ">= 0.12"
   backend "s3" {
-    bucket = "state"
+    bucket = "ddd-state"
     key    =  "terraform.tfstate"
-    region = "us-east-1"
-    dynamodb_table = aws_dynamodb_table.terraform_locks.name
+    region ="ca-central-1"
     encrypt        = true
-
   }
 }
 
 locals {
-  app = "api"
+  app = "prod.api"
   region = "ca-central-1"
   keyname = "aws"
   domain = "despairdrivendevelopment.net"
@@ -70,7 +43,7 @@ resource "null_resource" "docker_build" {
   }
 
   provisioner "local-exec" {
-    command = "docker build . -t devblog --build-arg aws_access_key_id =${var.aws_access_key_id} aws_secret_access_key =${var.aws_secret_access_key}    region =${var.region} db_type=${var.db_type}   db_host=${var.db_host}   db_port=${var.db_port}  db_username=${var.db_username} db_password=${var.db_password}  db_database=${var.db_database} api_port=${var.api_port}"
+    command = "docker build  -t devblog --build-arg api_port=${var.api_port} ."
   }
 
   provisioner "local-exec" {
@@ -79,12 +52,12 @@ resource "null_resource" "docker_build" {
 
   provisioner "local-exec" {
     when = destroy
-    command = "docker rmi devblog"
+    command = "docker rmi devblog --force"
   }
 }
 
 resource "aws_lightsail_key_pair" "lightsail_key_pair" {
-  name = "awskey"
+  name = "aws_key"
   public_key = tls_private_key.aws.public_key_openssh
 }
 resource "aws_lightsail_static_ip_attachment" "app" {
@@ -93,7 +66,7 @@ resource "aws_lightsail_static_ip_attachment" "app" {
 }
 
 resource "aws_lightsail_static_ip" "app" {
-  name = local.app
+  name = "${local.app}ip"
 }
 
 resource "aws_lightsail_instance" "app" {
@@ -142,7 +115,10 @@ resource "null_resource" "docker_deploy" {
     destination = "devblog.tar.gz"
   }
   provisioner "remote-exec" {
-    script = "deployment.sh"
+    inline = [
+    "sudo docker load --input devblog.tar.gz",
+      "sudo docker run -d -p ${var.api_port}:${var.api_port} --env aws_access_key_id=${var.aws_access_key_id} --env aws_secret_access_key=${var.aws_secret_access_key}   --env region=${var.region} --env db_type=${var.db_type}  --env db_host=${var.db_host} --env db_port=${var.db_port} --env db_username=${var.db_username} --env db_password=${var.db_password} --env  db_database=${var.db_database} --env api_port=${var.api_port} devblog"
+    ]
   }
 }
 
@@ -220,4 +196,7 @@ resource "aws_iam_user_policy" "app" {
 EOF
 }
 
+output "ip" {
+  value = aws_lightsail_instance.app.public_ip_address
+}
 
