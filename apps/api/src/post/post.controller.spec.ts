@@ -14,8 +14,8 @@ describe('Post Controller', () => {
           type: 'mysql',
           host: "localhost",
           port: 3306,
-          username:'dev',
-          password: 'mysql',
+          username:'root',
+          password: 'password',
           database: 'test',
           entities: [PostEntity],
           synchronize: true
