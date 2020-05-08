@@ -50,6 +50,9 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     MatIconModule,
     MatFormFieldModule,
     MatCardModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+    }),
     StoreModule.forRoot(
       {},
       {

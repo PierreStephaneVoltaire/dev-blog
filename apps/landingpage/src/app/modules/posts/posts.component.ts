@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PostsFacade } from './+state/posts.facade';
 import { Observable } from 'rxjs';
 import { PostsEntity } from './+state/posts.models';
@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css']
 })
-export class PostsComponent implements OnInit {
+export class PostsComponent implements OnInit,OnDestroy {
 
   $postList: Observable<PostsEntity[]>;
   $loaded: Observable<boolean>;
@@ -36,12 +36,16 @@ export class PostsComponent implements OnInit {
   };
 
   ngOnInit(): void {
-
+console.log("init PostComponent")
 
     this.$loaded = this.postsFacade.loaded$;
     this.$postList = this.postsFacade.allPosts$.pipe(map((posts) => {
       return posts.slice(this.currentPage, this.pageSize);
     }));
+  }
+
+  ngOnDestroy(): void {
+    console.log("destroy")
   }
 
 }
