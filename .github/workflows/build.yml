@@ -14,13 +14,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Shutdown Ubuntu MySQL (SUDO)
-        run: |
-          service mysql start;
-          mysql;
-          ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
-          flush privileges;
-          exit
       - name: Checkout source code
         uses: actions/checkout@master
       - name: Cache node modules0
