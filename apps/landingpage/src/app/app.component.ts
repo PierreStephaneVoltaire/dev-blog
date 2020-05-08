@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Message } from '@pvoltaire/api-interfaces';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { PostsFacade } from './modules/posts/+state/posts.facade';
 
@@ -10,7 +9,6 @@ import { PostsFacade } from './modules/posts/+state/posts.facade';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
-  hello$ = this.http.get<Message>('/api/hello');
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar,private readonly postsFacade: PostsFacade,) {
 

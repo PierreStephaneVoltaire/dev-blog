@@ -16,8 +16,6 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@pvoltaire/api-interfaces": ["libs/api-interfaces/src/index.ts"],
-      "@pvoltaire/document-storage": ["libs/document-storage/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

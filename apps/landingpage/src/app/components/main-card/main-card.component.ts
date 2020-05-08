@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Message } from '@pvoltaire/api-interfaces';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -10,7 +9,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class MainCardComponent  {
 
-  hello$ = this.http.get<Message>('/api/hello');
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar) {
   }

@@ -5,7 +5,6 @@ import { MatCardModule } from '@angular/material/card';
 import { PostsComponent } from '../../modules/posts/posts.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { SearchbarModule } from '../../modules/searchbar/searchbar.module';
-import { PostsModule } from '../../modules/posts/posts.module';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
