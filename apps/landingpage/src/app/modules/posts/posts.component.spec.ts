@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PostsComponent } from './posts.component';
 import { MatInputModule } from '@angular/material/input';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
@@ -17,6 +17,11 @@ import { StoreModule } from '@ngrx/store';
 import * as fromPosts from './+state/posts.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { PostsEffects } from './+state/posts.effects';
+import { MarkdownModule } from 'ngx-markdown';
+import { RoutingModule } from '../routing/routing.module';
+import { MainCardComponent } from '../../components/main-card/main-card.component';
+import { PostDetailsComponent } from './post-details/post-details.component';
+import { APP_BASE_HREF } from '@angular/common';
 
 describe('PostsComponent', () => {
   let component: PostsComponent;
@@ -24,7 +29,8 @@ describe('PostsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PostsComponent],imports:[
+      declarations: [PostsComponent,PostDetailsComponent,    MainCardComponent
+      ], imports: [
         MatInputModule,
         HttpClientModule,
         StoreModule.forRoot({}),
@@ -35,12 +41,15 @@ describe('PostsComponent', () => {
         MatButtonModule,
         MatGridListModule,
         MatMenuModule,
+        MarkdownModule.forRoot({ loader: HttpClient }),
+        RoutingModule,
+
         MatIconModule,
         MatFormFieldModule,
         MatCardModule,
         MatChipsModule,
         MatRippleModule],
-      providers: [PostsFacade]
+      providers:[{provide: APP_BASE_HREF, useValue : '/' },PostsFacade],
 
     })
       .compileComponents();

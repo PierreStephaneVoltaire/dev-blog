@@ -31,13 +31,11 @@ jobs:
       - name: Test
         run: npm run test
       - name: Build
+        if: github.ref == 'refs/heads/master'
         run: npm run build
       - name: Build Api
+        if: github.ref == 'refs/heads/master'
         run: npm run build:api
-      - name: add package.json and locks in api build
-        run: cp ./package*.json yarn* ./dist/apps/api
-      - name: add docker related files to build dir
-        run: cp Dockerfile api-docker-compose.yml ./dist/apps/api
       - name: Deploy
         if: github.ref == 'refs/heads/master'
         env:

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { PostsEntity } from './+state/posts.models';
 import { map } from 'rxjs/operators';
 import { SelectPost } from './+state/posts.actions';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'blog-posts',
@@ -18,20 +19,23 @@ export class PostsComponent implements OnInit {
   pageSize = 6;
   myColor = '#3f51b5';
 
-  constructor(private readonly postsFacade: PostsFacade) {
+  constructor(private readonly postsFacade: PostsFacade,
+              private router:Router,
+              private route: ActivatedRoute)
+
+
+              {
 
   }
 
   click = (id: string) => {
     this.postsFacade.dispatch(SelectPost({ selectedId: id }));
-    this.postsFacade.selectedPosts$.subscribe((postid => {
-      console.log(postid);
-    }));
+    this.router.navigate(['/post'], { queryParams:{id:id} });
+
 
   };
 
   ngOnInit(): void {
-    this.postsFacade.dispatch({ type: '[Posts] Load Posts' });
 
 
     this.$loaded = this.postsFacade.loaded$;

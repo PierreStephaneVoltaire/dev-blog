@@ -1,6 +1,6 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, TestBed } from '@angular/core/testing';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { SearchbarModule } from './modules/searchbar/searchbar.module';
@@ -18,11 +18,17 @@ import { StoreModule } from '@ngrx/store';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { MarkdownModule } from 'ngx-markdown';
+import { RoutingModule } from './modules/routing/routing.module';
+import { MainCardComponent } from './components/main-card/main-card.component';
+import {APP_BASE_HREF} from '@angular/common';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent],
+      declarations: [AppComponent,    MainCardComponent
+      ],
+      providers:[{provide: APP_BASE_HREF, useValue : '/' }],
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA
       ],
@@ -34,6 +40,9 @@ describe('AppComponent', () => {
         MatInputModule,
         HttpClientModule,
         MatButtonModule,
+        MarkdownModule.forRoot({ loader: HttpClient }),
+        RoutingModule,
+
         BrowserAnimationsModule,
         SearchbarModule,
         MatGridListModule,

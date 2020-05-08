@@ -1,6 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PostController } from './post.controller';
-import { PostsService } from '../../../landingpage/src/app/modules/posts.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { PostEntity } from './post.entity';
 import { PostService } from './post.service';
