@@ -15,12 +15,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Shutdown Ubuntu MySQL (SUDO)
-        run: sudo service mysql stop # Shutdown the Default MySQL, "sudo" is necessary, please not remove it
+        run: sudo service mysql stop
       - name: add mysql
         uses: mirromutth/mysql-action@v1.1
         with:
           mysql version: '8.0' # Optional, default value is "latest". The version of the MySQL
-          mysql root password: 'password'} # Required if "mysql user" is empty, default is empty. The root superuser password
+          mysql root password: 'password' # Required if "mysql user" is empty, default is empty. The root superuser password
+      - name: Shutdown Ubuntu MySQL (SUDO)
+        run: |
+          mysql;
+          ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+          flush privileges;
+          exit
       - name: Checkout source code
         uses: actions/checkout@master
       - name: Cache node modules0
