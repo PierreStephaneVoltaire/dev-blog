@@ -12,10 +12,10 @@ describe('PostService', () => {
       imports: [    TypeOrmModule.forRoot({
         type: 'mysql',
         host: "localhost",
-        port: 3306,
-        username: "root",
+        port: 3307,
+        username: "dev",
         password: "mysql",
-        database: "mysql",
+        database: "test",
         entities: [PostEntity],
         synchronize: true
       }),TypeOrmModule.forFeature([PostEntity])],

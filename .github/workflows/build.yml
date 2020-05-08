@@ -14,6 +14,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Add db
+        uses: mirromutth/mysql-action@v1.1
+          with:
+            host port: 3307 # Optional, default value is 3306. The port of host
+            container port: 3307 # Optional, default value is 3306. The port of container
+            mysql version: '8.0' # Optional, default value is "latest". The version of the MySQL
+            mysql database: 'test' # Optional, default value is "test". The specified database which will be create
+            mysql user: 'dev' # Required if "mysql root password" is empty, default is empty. The superuser for the specified database. Can use secrets, too
+            mysql password: "mysql" # Required if "mysql user" exists. The password for the "mysql user"
       - name: Checkout source code
         uses: actions/checkout@master
       - name: Cache node modules0
@@ -31,13 +40,11 @@ jobs:
       - name: Test
         run: npm run test
       - name: Build
+        if: github.ref == 'refs/heads/master'
         run: npm run build
       - name: Build Api
+        if: github.ref == 'refs/heads/master'
         run: npm run build:api
-      - name: add package.json and locks in api build
-        run: cp ./package*.json yarn* ./dist/apps/api
-      - name: add docker related files to build dir
-        run: cp Dockerfile api-docker-compose.yml ./dist/apps/api
       - name: Deploy
         if: github.ref == 'refs/heads/master'
         env:
