@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { fetch } from '@nrwl/angular';
 import * as PostsActions from './posts.actions';
-import { PostsService } from '../../posts.service';
+import { PostsService } from '../posts.service';
 import { map } from 'rxjs/operators';
 
 @Injectable()

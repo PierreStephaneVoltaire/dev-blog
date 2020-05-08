@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { PostsEntity } from './posts/+state/posts.models';
+import { PostsEntity } from './+state/posts.models';
 import { map } from 'rxjs/operators';
 
 @Injectable({

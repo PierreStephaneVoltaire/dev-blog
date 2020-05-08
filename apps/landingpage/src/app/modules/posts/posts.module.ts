@@ -10,7 +10,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
-import { PostCardComponent } from './components/post-card/post-card.component';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import * as fromPosts from './+state/posts.reducer';
@@ -18,9 +17,11 @@ import { PostsEffects } from './+state/posts.effects';
 import { PostsFacade } from './+state/posts.facade';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatRippleModule } from '@angular/material/core';
+import { PostDetailsComponent } from './post-details/post-details.component';
+import { MarkdownModule } from 'ngx-markdown';
 
 @NgModule({
-  declarations: [PostsComponent, PostCardComponent],
+  declarations: [PostsComponent, PostDetailsComponent],
   imports: [
     CommonModule,
     MatInputModule,
@@ -35,7 +36,8 @@ import { MatRippleModule } from '@angular/material/core';
     StoreModule.forFeature(fromPosts.POSTS_FEATURE_KEY, fromPosts.reducer),
     EffectsModule.forFeature([PostsEffects]),
     MatChipsModule,
-    MatRippleModule
+    MatRippleModule,
+    MarkdownModule
   ],
   exports: [
     PostsComponent

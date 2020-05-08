@@ -28,7 +28,6 @@ terraform.tfvars
 !.vscode/launch.json
 !.vscode/extensions.json
 .terraform
-terraform.tfvars
 aws
 aws.*
 # misc

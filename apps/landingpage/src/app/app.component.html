@@ -1,14 +1,8 @@
 <div class="content">
 
   <blog-searchbar></blog-searchbar>
-
-  <blog-posts>
-    <div class="view-btns">
-      <button (click)="notYetSupported()" class="full" mat-raised-button>View More</button>
-      <button (click)="notYetSupported()" class="full" mat-button>Autoscroll</button>
-    </div>
-  </blog-posts>
-
-
+  <div class="main-card">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 
