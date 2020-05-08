@@ -12,11 +12,11 @@ describe('Post Controller', () => {
       imports: [
         TypeOrmModule.forRoot({
           type: 'mysql',
-          host: process.env.db_host,
+          host: "localhost",
           port: 3306,
-          username: process.env.db_username,
-          password: process.env.db_password,
-          database: process.env.db_database,
+          username:'dev',
+          password: 'mysql',
+          database: 'test',
           entities: [PostEntity],
           synchronize: true
         })
