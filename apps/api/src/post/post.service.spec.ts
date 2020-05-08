@@ -12,7 +12,7 @@ describe('PostService', () => {
       imports: [    TypeOrmModule.forRoot({
         type: 'mysql',
         host: "localhost",
-        port: 3307,
+        port: 3306,
         username: "dev",
         password: "mysql",
         database: "test",
