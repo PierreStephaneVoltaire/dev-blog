@@ -19,7 +19,7 @@ export class PostEntity {
   @Column()
   PostContent: string;
   @Column()
-  @Column({ type: 'json' })
+  @Column({ type: process.env.environment==="dev"||process.env.environment==="prod"?'json':'text' })
   Meta: any;
 
 }
