@@ -9,13 +9,12 @@ on:
     branches: [ master,feature/*,develop]
   pull_request:
     branches: [ master,develop ]
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
-        uses: actions/checkout@master
+        uses: actions/checkout
       - name: Cache node modules0
         uses: actions/cache@v1
         with:
@@ -31,14 +30,10 @@ jobs:
       - name: Test landingpage
         run: npm run test landingpage
       - name: Test api
-        if: github.ref == 'refs/heads/master'
         run: npm run test api
       - name: Build
         run: npm run build
-      - name: Build Api
-        if: github.ref == 'refs/heads/master'
-        run: npm run build:api
-      - name: Deploy
+      - name: Deploy front end
         if: github.ref == 'refs/heads/master'
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

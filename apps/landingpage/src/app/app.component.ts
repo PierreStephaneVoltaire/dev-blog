@@ -9,11 +9,15 @@ import { PostsFacade } from './modules/posts/+state/posts.facade';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit{
+  innerWidth: number;
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar,private readonly postsFacade: PostsFacade,) {
+    this.innerWidth = window.innerWidth;
 
   }
-
+  onResize(event) {
+    this.innerWidth=event.target.innerWidth;
+  }
   notYetSupported = () => {
     this._snackBar.open('This feature has yet to be implemented', null, {
       duration: 2000

@@ -20,6 +20,9 @@
     },
     "api": {
       "tags": []
+    },
+    "api2": {
+      "tags": []
     }
   },
   "tasksRunnerOptions": {

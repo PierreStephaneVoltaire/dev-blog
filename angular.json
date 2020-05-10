@@ -193,7 +193,18 @@
           }
         }
       }
-    }},
+    },
+    "api2": {
+      "root": "apps/api",
+      "sourceRoot": "apps/api/src",
+      "projectType": "application",
+      "prefix": "api",
+      "schematics": {},
+      "architect": {
+
+      }
+    }
+  },
   "cli": {
     "defaultCollection": "@nrwl/angular"
   },

@@ -22,6 +22,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { RoutingModule } from './modules/routing/routing.module';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { MarkdownModule } from 'ngx-markdown';
+import { ErrorPageComponent } from './components/error-page/error-page.component';
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({keys: ['posts']})(reducer);
 }
@@ -30,7 +31,8 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
 @NgModule({
   declarations: [
     AppComponent,
-    MainCardComponent
+    MainCardComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,

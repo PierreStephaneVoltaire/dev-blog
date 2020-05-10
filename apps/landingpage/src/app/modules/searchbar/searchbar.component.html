@@ -1,7 +1,7 @@
-<div class="blog-navbar">
-  <div class="grid-container">
-    <div class="grid-row">
-      <div class="blog-menu">
+<div class="blog-navbar navbar">
+    <section class="navbar-section">
+
+    <div class="blog-menu">
         <mat-menu #appMenu="matMenu">
           <button mat-menu-item>Settings</button>
           <button mat-menu-item>About</button>
@@ -11,8 +11,9 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span class="blog-title">Despair Driven Development</span>
-    </div>
-    <div class="grid-row">
+    </section>
+    <section *ngIf="this.wSize>750" class="navbar-section">
+
       <form class="example-form">
         <mat-form-field class="search-bar">
           <mat-icon matPrefix>search</mat-icon>
@@ -20,14 +21,16 @@
           <input matInput>
         </mat-form-field>
       </form>
-    </div>
-    <div class="grid-row">
-      <div class="blog-avatar">
+    </section>
+    <section class="navbar-section">
+
+    <div class="blog-avatar">
         <button aria-label="Example icon button with a home icon" disabled mat-mini-fab>
           <mat-icon>home</mat-icon>
         </button>
       </div>
-    </div>
+    </section>
 
-  </div>
+
+
 </div>
