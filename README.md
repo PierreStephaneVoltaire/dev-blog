@@ -29,27 +29,27 @@ The architecture right now, is a bit of a mess, so it is subject to change
 ---
 
 ## Features , Progress & stack
-- [] User login/sign up (WIp)
+- [ ] User login/sign up (WIp)
   * Dotnet core (C#)
   * AWS Cognito
   * Entity framework Core  
   * RDS (MySql)
   * React
-- [] Content viewing (Posts)(WIP)
+- [ ] Content viewing (Posts)(WIP)
   * Angular
-- [] Content management and creation(WIP)
+- [ ] Content management and creation(WIP)
   * Typescript
   * RDS (MySql)
   * TypeORM
   * Nestjs
   * React
-- [] Post templates creation and selection
-- [] Post versioning : Draft/updates
-- [] Comments
-- [] Chat
-- [] Email notification
-- [] Virtual meetings
-- [] Post Fuzzy search
+- [ ] Post templates creation and selection
+- [ ] Post versioning (Draft/updates)
+- [ ] Comments
+- [ ] Chat
+- [ ] Email notification
+- [ ] Virtual meetings
+- [ ] Post Fuzzy search
   * SpringBoot (JAVA)
   * Elasticsearch
   * JAVA
