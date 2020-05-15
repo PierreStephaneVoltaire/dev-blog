@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'blog-searchbar',
@@ -9,7 +9,7 @@ export class SearchBarComponent implements OnInit {
 
   constructor() {
   }
-
+@Input() wSize:number
   ngOnInit(): void {
   }
 
