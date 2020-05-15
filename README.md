@@ -1,4 +1,5 @@
-# Pvoltaire
+# Dev-Blog
+### despair driven development
 ![GitHub repo size](https://img.shields.io/github/repo-size/PierreStephaneVoltaire/pvoltaire)
 ![GitHub last commit](https://img.shields.io/github/last-commit/PierreStephaneVoltaire/pvoltaire)
 ![GitHub](https://img.shields.io/github/license/PierreStephaneVoltaire/pvoltaire)
@@ -27,14 +28,30 @@ The architecture right now, is a bit of a mess, so it is subject to change
 
 ---
 
-## Features
-* User login/sign up
-    * Basic
-    * social media
-* Content management and creation
-* Post templates creation and selection
-* Post versioning : Draft/updates
-* Comments
-
+## Features , Progress & stack
+- [] User login/sign up (WIp)
+  * Dotnet core (C#)
+  * AWS Cognito
+  * Entity framework Core  
+  * RDS (MySql)
+  * React
+- [] Content viewing (Posts)(WIP)
+  * Angular
+- [] Content management and creation(WIP)
+  * Typescript
+  * RDS (MySql)
+  * TypeORM
+  * Nestjs
+  * React
+- [] Post templates creation and selection
+- [] Post versioning : Draft/updates
+- [] Comments
+- [] Chat
+- [] Email notification
+- [] Virtual meetings
+- [] Post Fuzzy search
+  * SpringBoot (JAVA)
+  * Elasticsearch
+  * JAVA
 ## link
 http://despairdrivendevelopment.net/
