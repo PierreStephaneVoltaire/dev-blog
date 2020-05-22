@@ -1,53 +1,58 @@
 {
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
+  "newProjectRoot": "projects",
   "projects": {
-    "landingpage": {
+    "landingPage": {
       "projectType": "application",
       "schematics": {
-        "@nrwl/angular:component": {
-          "style": "scss"
+        "@schematics/angular:component": {
+          "style": "sass"
         }
       },
-      "root": "apps/landingpage",
-      "sourceRoot": "apps/landingpage/src",
-      "prefix": "dev-blog",
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/apps/landingpage",
-            "index": "apps/landingpage/src/index.html",
-            "main": "apps/landingpage/src/main.ts",
-            "polyfills": "apps/landingpage/src/polyfills.ts",
-            "tsConfig": "apps/landingpage/tsconfig.app.json",
-            "aot": true,
+            "outputPath": "dist/landingPage",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": false,
             "assets": [
-              "apps/landingpage/src/favicon.ico",
-              "apps/landingpage/src/assets"
+              "src/favicon.ico",
+              "src/assets"
             ],
-            "styles": ["apps/landingpage/src/styles.scss",
-              "node_modules/prismjs/themes/prism-okaidia.css" ,
-              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css"
-            ,"node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css"
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.sass",
+              "node_modules/prismjs/themes/prism-okaidia.css",
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.css",
+              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.css"
             ],
-            "scripts": ["node_modules/marked/lib/marked.js",
+            "scripts": [
+              "node_modules/marked/lib/marked.js",
               "node_modules/prismjs/prism.js",
-               "node_modules/prismjs/components/prism-csharp.min.js",
+              "node_modules/prismjs/components/prism-csharp.min.js",
               "node_modules/prismjs/components/prism-css.min.js",
               "node_modules/prismjs/components/prism-java.min.js",
               "node_modules/prismjs/components/prism-php.min.js",
               "node_modules/prismjs/components/prism-javascript.min.js",
-              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js"
-
-           ,"node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js",
-              "node_modules/katex/dist/katex.min.js"]
+              "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.js",
+              "node_modules/prismjs/plugins/line-highlight/prism-line-highlight.js",
+              "node_modules/katex/dist/katex.min.js"
+            ]
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "apps/landingpage/src/environments/environment.ts",
-                  "with": "apps/landingpage/src/environments/environment.prod.ts"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -55,6 +60,7 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
+              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -76,160 +82,68 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "landingpage:build",
-            "proxyConfig": "apps/landingpage/proxy.conf.json"
+            "browserTarget": "landingPage:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "landingpage:build:production"
+              "browserTarget": "landingPage:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "landingpage:build"
+            "browserTarget": "landingPage:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "src/styles.sass"
+            ],
+            "scripts": []
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/landingpage/tsconfig.app.json",
-              "apps/landingpage/tsconfig.spec.json"
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**", "!apps/landingpage/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/landingpage/jest.config.js",
-            "tsConfig": "apps/landingpage/tsconfig.spec.json",
-            "passWithNoTests": true,
-            "setupFile": "apps/landingpage/src/test-setup.ts"
-          }
-        }
-      }
-    },
-    "landingpage-e2e": {
-      "root": "apps/landingpage-e2e",
-      "sourceRoot": "apps/landingpage-e2e/src",
-      "projectType": "application",
-      "architect": {
         "e2e": {
-          "builder": "@nrwl/cypress:cypress",
+          "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "cypressConfig": "apps/landingpage-e2e/cypress.json",
-            "tsConfig": "apps/landingpage-e2e/tsconfig.e2e.json",
-            "devServerTarget": "landingpage:serve"
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "landingPage:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "landingpage:serve:production"
+              "devServerTarget": "landingPage:serve:production"
             }
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["apps/landingpage-e2e/tsconfig.e2e.json"],
-            "exclude": ["**/node_modules/**", "!apps/landingpage-e2e/**"]
-          }
         }
-      }
-    },
-    "api": {
-      "root": "apps/api",
-      "sourceRoot": "apps/api/src",
-      "projectType": "application",
-      "prefix": "api",
-      "schematics": {},
-      "architect": {
-        "build": {
-          "builder": "@nrwl/node:build",
-          "options": {
-            "outputPath": "dist/apps/api",
-            "main": "apps/api/src/main.ts",
-            "tsConfig": "apps/api/tsconfig.app.json",
-            "assets": ["apps/api/src/assets"]
-          },
-          "configurations": {
-            "production": {
-              "optimization": true,
-              "extractLicenses": true,
-              "inspect": false,
-              "fileReplacements": [
-                {
-                  "replace": "apps/api/src/environments/environment.ts",
-                  "with": "apps/api/src/environments/environment.prod.ts"
-                }
-              ]
-            }
-          }
-        },
-        "serve": {
-          "builder": "@nrwl/node:execute",
-          "options": {
-            "buildTarget": "api:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "apps/api/tsconfig.app.json",
-              "apps/api/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!apps/api/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "apps/api/jest.config.js",
-            "tsConfig": "apps/api/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "api2": {
-      "root": "apps/api",
-      "sourceRoot": "apps/api/src",
-      "projectType": "application",
-      "prefix": "api",
-      "schematics": {},
-      "architect": {
-
       }
     }
   },
+  "defaultProject": "landingPage",
   "cli": {
-    "defaultCollection": "@nrwl/angular"
-  },
-  "schematics": {
-    "@nrwl/angular:application": {
-      "unitTestRunner": "jest",
-      "e2eTestRunner": "cypress"
-    },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/react": {
-      "application": {
-        "style": "scss",
-        "linter": "tslint",
-        "babel": true
-      },
-      "component": {
-        "style": "scss"
-      },
-      "library": {
-        "style": "scss",
-        "linter": "tslint"
-      }
-    }
-  },
-  "defaultProject": "landingpage"
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
