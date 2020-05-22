@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './main-card.component.html',
   styleUrls: ['./main-card.component.sass']
 })
-export class MainCardComponent  {
+export class MainCardComponent {
 
 
   constructor(private http: HttpClient, private _snackBar: MatSnackBar) {

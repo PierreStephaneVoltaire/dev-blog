@@ -11,7 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './posts.component.html',
   styleUrls: ['./posts.component.css']
 })
-export class PostsComponent implements OnInit,OnDestroy {
+export class PostsComponent implements OnInit, OnDestroy {
 
   $postList: Observable<PostsEntity[]>;
   $loaded: Observable<boolean>;
@@ -20,23 +20,20 @@ export class PostsComponent implements OnInit,OnDestroy {
   myColor = '#3f51b5';
 
   constructor(private readonly postsFacade: PostsFacade,
-              private router:Router,
-              private route: ActivatedRoute)
-
-
-              {
+              private router: Router,
+              private route: ActivatedRoute) {
 
   }
 
   click = (id: string) => {
     this.postsFacade.dispatch(SelectPost({ selectedId: id }));
-    this.router.navigate(['/post'], { queryParams:{id:id} });
+    this.router.navigate(['/post'], { queryParams: { id: id } });
 
 
   };
 
   ngOnInit(): void {
-console.log("init PostComponent")
+    console.log('init PostComponent');
 
     this.$loaded = this.postsFacade.loaded$;
     this.$postList = this.postsFacade.allPosts$.pipe(map((posts) => {
@@ -45,7 +42,7 @@ console.log("init PostComponent")
   }
 
   ngOnDestroy(): void {
-    console.log("destroy")
+    console.log('destroy');
   }
 
 }

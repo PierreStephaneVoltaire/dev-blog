@@ -24,7 +24,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { APP_BASE_HREF } from '@angular/common';
-import {MainCardComponent} from "../../pages/main-card/main-card.component";
+import { MainCardComponent } from '../../pages/main-card/main-card.component';
 
 describe('PostDetailsComponent', () => {
   let component: PostDetailsComponent;
@@ -32,9 +32,9 @@ describe('PostDetailsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostDetailsComponent,    MainCardComponent,PostsComponent
+      declarations: [PostDetailsComponent, MainCardComponent, PostsComponent
       ],
-      imports:[MatCardModule, BrowserModule,
+      imports: [MatCardModule, BrowserModule,
         SearchbarModule,
         SearchbarModule,
         MatInputModule,
@@ -56,10 +56,10 @@ describe('PostDetailsComponent', () => {
         MatIconModule,
         MatFormFieldModule,
         MatChipsModule,
-        MatRippleModule ],
-      providers:[{provide: APP_BASE_HREF, useValue : '/' },PostsFacade],
+        MatRippleModule],
+      providers: [{ provide: APP_BASE_HREF, useValue: '/' }, PostsFacade]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

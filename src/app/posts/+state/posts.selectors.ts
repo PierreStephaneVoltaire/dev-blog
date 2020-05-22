@@ -1,9 +1,9 @@
-import {createFeatureSelector, createSelector} from '@ngrx/store';
-import {postsAdapter, postsFeatureKey, PostsPartialState, State} from './posts.reducer';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { postsAdapter, postsFeatureKey, PostsPartialState, State } from './posts.reducer';
 
 // Lookup the 'Posts' feature state managed by NgRx
 export const getPostsState = createFeatureSelector<PostsPartialState, State>(
- postsFeatureKey
+  postsFeatureKey
 );
 
 const { selectAll, selectEntities } = postsAdapter.getSelectors();

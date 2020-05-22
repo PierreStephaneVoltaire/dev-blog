@@ -18,7 +18,7 @@ import { PostDetailsComponent } from './post-details/post-details.component';
 import { MarkdownModule } from 'ngx-markdown';
 import * as fromPosts from './+state/posts.reducer';
 import { PostsEffects } from './+state/posts.effects';
-import {PostsFacade} from "./+state/posts.facade";
+import { PostsFacade } from './+state/posts.facade';
 
 @NgModule({
   declarations: [PostsComponent, PostDetailsComponent],

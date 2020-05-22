@@ -1,47 +1,48 @@
 <div class="blog-navbar navbar">
-    <section class="navbar-section">
+  <section class="navbar-section">
 
     <div class="blog-menu">
-        <mat-menu #appMenu="matMenu">
-          <button mat-menu-item>Settings</button>
-          <button mat-menu-item>About</button>
-        </mat-menu>
-      </div>
-      <button [matMenuTriggerFor]="appMenu" mat-icon-button>
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span class="blog-title">Despair Driven Development</span>
-    </section>
-    <section *ngIf="this.wSize>750" class="navbar-section">
+      <mat-menu #appMenu="matMenu">
+        <button mat-menu-item>Settings</button>
+        <button mat-menu-item>About</button>
+      </mat-menu>
+    </div>
+    <button [matMenuTriggerFor]="appMenu" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="blog-title">Despair Driven Development</span>
+  </section>
+  <section *ngIf="this.wSize>750" class="navbar-section">
 
-      <form class="example-form">
-        <mat-form-field class="search-bar">
-          <mat-icon matPrefix>search</mat-icon>
+    <form class="example-form">
+      <mat-form-field class="search-bar">
+        <mat-icon matPrefix>search</mat-icon>
 
-          <input matInput>
-        </mat-form-field>
-      </form>
-    </section>
-    <section class="navbar-section">
+        <input matInput>
+      </mat-form-field>
+    </form>
+  </section>
+  <section class="navbar-section">
 
     <div class="blog-avatar">
       <mat-menu #profileMenu="matMenu">
         <button (click)="goToSignUpPage()" mat-menu-item>
           <mat-icon>lock_open</mat-icon>
 
-          SignIn</button>
+          SignIn
+        </button>
         <button mat-menu-item>
           <mat-icon>person</mat-icon>
 
-          View Profile</button>
+          View Profile
+        </button>
       </mat-menu>
 
-      <button color="primary" aria-label="home icon" [matMenuTriggerFor]="profileMenu" mat-mini-fab>
-          <mat-icon>home</mat-icon>
-        </button>
-      </div>
-    </section>
-
+      <button [matMenuTriggerFor]="profileMenu" aria-label="home icon" color="primary" mat-mini-fab>
+        <mat-icon>home</mat-icon>
+      </button>
+    </div>
+  </section>
 
 
 </div>

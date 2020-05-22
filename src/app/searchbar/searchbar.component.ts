@@ -7,9 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SearchBarComponent implements OnInit {
 
+  @Input() wSize: number;
+
   constructor() {
   }
-@Input() wSize:number
+
   ngOnInit(): void {
   }
 

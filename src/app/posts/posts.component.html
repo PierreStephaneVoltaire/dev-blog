@@ -1,20 +1,19 @@
 <div class="main-card">
   <div class="posts">
 
-    <mat-card  (click)="click(post.id)" *ngFor="let post of ($postList|async);index as i" [matRippleColor]="myColor"
+    <mat-card (click)="click(post.id)" *ngFor="let post of ($postList|async);index as i" [matRippleColor]="myColor"
               class="post-card" matRipple>
       <mat-card-header class="center">
 
 
+        <mat-card-title class="card-title">
+          {{post.PostTitle}}
+        </mat-card-title>
 
-          <mat-card-title class="card-title">
-            {{post.PostTitle}}
-          </mat-card-title>
+        <mat-card-subtitle class="card-subtitle">
+          {{post.PostSubTitle|slice: 0 :100}}
 
-          <mat-card-subtitle class="card-subtitle">
-            {{post.PostSubTitle|slice: 0 :100}}
-
-          </mat-card-subtitle>
+        </mat-card-subtitle>
 
 
       </mat-card-header>
@@ -26,7 +25,7 @@
         <mat-chip-list class="text-date">
           <mat-chip> Posted on {{(post.UpdateDate ? post.UpdateDate : post.CreatedDate)|date}}
           </mat-chip>
-          <mat-chip *ngIf="post.Meta.author" selected color="primary">
+          <mat-chip *ngIf="post.Meta.author" color="primary" selected>
             By {{post.Meta.author}}
           </mat-chip>
 
