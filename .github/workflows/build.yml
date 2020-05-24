@@ -30,8 +30,6 @@ jobs:
       - name: Lint
         if: github.ref == 'refs/heads/master'
         run: yarn lint
-      - name: Test landingpage
-        run: yarn test
       - name: Build
         if: github.ref == 'refs/heads/master'
         run: yarn build

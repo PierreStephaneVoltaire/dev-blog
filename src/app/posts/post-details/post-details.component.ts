@@ -16,8 +16,8 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
   post$: Observable<PostsEntity>;
   currRoute: number | string;
   Type = {
-    'text': 'text',
-    'md': 'md'
+    text: 'text',
+    md: 'md'
   };
 
   constructor(private readonly postsFacade: PostsFacade,
@@ -28,11 +28,11 @@ export class PostDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subs = this.route.queryParams.pipe(flatMap(curRoute => {
-      this.currRoute = curRoute['id'];
+      this.currRoute = curRoute.id;
       return this.postsFacade.selectedPosts$;
     })).subscribe(post => {
       if (!this.currRoute) {
-        //go to 404
+        // go to 404
       }
       if (!post || this.currRoute !== post.id) {
         this.postsFacade.dispatch(SelectPost({ selectedId: this.currRoute }));
