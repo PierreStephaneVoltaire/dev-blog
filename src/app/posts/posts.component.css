@@ -1,0 +1,54 @@
+
+.posts {
+  min-height: calc(100vh - 264px);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 24px;
+}
+
+.post-card {
+  width: calc(100vw / 4);
+  height: calc(100vh / 3.5);
+  overflow: hidden;
+  margin: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.text-date {
+  padding: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.card-title {
+  text-align: center;
+}
+
+.card-subtitle {
+  text-align: center;
+}
+
+.card-content {
+  width: 100%;
+}
+
+.center {
+  width: 100%;
+  flex-direction: column !important;
+  padding: 5px;
+
+}
+
+.content-text {
+  text-align: center;
+  height: 100%;
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}

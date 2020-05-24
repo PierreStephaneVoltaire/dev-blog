@@ -43,10 +43,11 @@ yarn.lock
 # System Files
 .DS_Store
 Thumbs.db
-.env
+Services/post-api/.env
 .localstack
 *.sqlite
-
+.env
+**/.env
 
 # Created by https://www.gitignore.io/api/rider,dotnetcore
 # Edit at https://www.gitignore.io/?templates=rider,dotnetcore
@@ -425,5 +426,5 @@ __pycache__/
 
 
 # Cake - Uncomment if you are using it
-# **/tools/**
-# !tools/packages.config
+**/cert.pem
+**/privkey.pem
