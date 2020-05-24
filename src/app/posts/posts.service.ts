@@ -13,7 +13,7 @@ export class PostsService {
   }
 
   getPosts(): Observable<PostsEntity[]> {
-    return this.http.get<PostsEntity[]>('http://localhost:3336/api/post').pipe(map(entities => {
+    return this.http.get<PostsEntity[]>('https://prod.api.despairdrivendevelopment.net/api/post').pipe(map(entities => {
       return entities.map(ent => Object.assign({ id: ent.PostID }, ent)
       );
     }));

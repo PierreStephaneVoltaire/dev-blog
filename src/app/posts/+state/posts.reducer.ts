@@ -28,11 +28,11 @@ const postsReducer = createReducer(
     error: null
   })),
   on(PostsActions.loadPostsSuccess, (state, { posts }) =>
-    postsAdapter.addAll(posts, { ...state, loaded: true })
+    postsAdapter.setAll(posts, { ...state, loaded: true })
   ),
   on(PostsActions.SelectPost, (state, { selectedId }) => ({
     ...state,
-    selectedId: selectedId
+    selectedId
   })),
   on(PostsActions.loadPostsFailure, (state, { error }) => ({ ...state, error }))
 );
