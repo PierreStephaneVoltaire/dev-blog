@@ -25,12 +25,6 @@ export class PostsComponent implements OnInit, OnDestroy {
 
   }
 
-  click = (id: string) => {
-    this.postsFacade.dispatch(SelectPost({ selectedId: id }));
-    this.router.navigate(['/post'], { queryParams: { id } });
-
-
-  };
 
   ngOnInit(): void {
     console.log('init PostComponent');

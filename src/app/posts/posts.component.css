@@ -1,21 +1,23 @@
 
 .posts {
-  min-height: calc(100vh - 264px);
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding: 24px;
 }
 
 .post-card {
-  width: calc(100vw / 4);
+  width: calc(90vw);
   height: calc(100vh / 3.5);
   overflow: hidden;
   margin: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-radius: 4px;
+  padding-left: 40px;
+  cursor: pointer;
+
 }
 
 .text-date {
@@ -26,18 +28,35 @@
 }
 
 .card-title {
-  text-align: center;
+  padding-top: 1em;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-content: space-evenly;
+  padding-bottom: 1em;
 }
-
+.meta-title{
+  font-size: medium;
+}
+.card-title-content{
+  padding-right: 1em;
+  font-size: 2em;
+}
 .card-subtitle {
-  text-align: center;
+  text-align: left;
+  font-size: 1em;
+
 }
 
 .card-content {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+
 }
 
-.center {
+.card-header {
   width: 100%;
   flex-direction: column !important;
   padding: 5px;
@@ -47,8 +66,17 @@
 .content-text {
   text-align: center;
   height: 100%;
+  width: 50%;
   white-space: pre-wrap;
   white-space: -moz-pre-wrap;
   white-space: -o-pre-wrap;
   word-wrap: break-word;
+  text-decoration:none;
+  color: gray !important;
+  font-size: 1.5em;
+  font-family: "Roboto", sans-serif;
+}
+
+.full{
+  width: 100%;
 }

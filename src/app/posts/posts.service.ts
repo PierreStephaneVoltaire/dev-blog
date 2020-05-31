@@ -14,6 +14,7 @@ export class PostsService {
 
   getPosts(): Observable<PostsEntity[]> {
     return this.http.get<PostsEntity[]>('https://prod.api.despairdrivendevelopment.net/api/post').pipe(map(entities => {
+    console.table(entities)
       return entities.map(ent => Object.assign({ id: ent.PostID }, ent)
       );
     }));
