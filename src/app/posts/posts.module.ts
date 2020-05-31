@@ -19,6 +19,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import * as fromPosts from './+state/posts.reducer';
 import { PostsEffects } from './+state/posts.effects';
 import { PostsFacade } from './+state/posts.facade';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [PostsComponent, PostDetailsComponent],
@@ -38,7 +39,8 @@ import { PostsFacade } from './+state/posts.facade';
     MatChipsModule,
     MatRippleModule,
     MarkdownModule,
-    StoreModule.forFeature(fromPosts.postsFeatureKey, fromPosts.reducer)
+    StoreModule.forFeature(fromPosts.postsFeatureKey, fromPosts.reducer),
+    RouterModule
   ],
   exports: [
     PostsComponent

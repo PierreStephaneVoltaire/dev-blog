@@ -6,6 +6,7 @@ export interface PostsEntity {
   PostID?: string | number
   PostTitle: string
   PostSubTitle: string
+author:string
   PostThumbNailImage: string
   CreatedDate: Date | string
   UpdateDate: Date | string
