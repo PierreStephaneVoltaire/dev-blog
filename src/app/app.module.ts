@@ -23,7 +23,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { environment } from '../environments/environment';
 import { ActionReducer, MetaReducer, StoreModule } from '@ngrx/store';
 import { localStorageSync } from 'ngrx-store-localstorage';
-import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 
 export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
   return localStorageSync({ keys: ['posts'] })(reducer);
@@ -43,7 +42,6 @@ const metaReducers: Array<MetaReducer<any, any>> = [localStorageSyncReducer];
     RoutingModule,
     SearchbarModule,
     PostsModule,
-    AmplifyUIAngularModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
     SearchbarModule,
     MatInputModule,
