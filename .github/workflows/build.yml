@@ -47,3 +47,37 @@ jobs:
             --recursive \
             --region ap-northeast-2 \
             dist/landingPage s3://despairdrivendevelopment.net
+
+  document:
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout source code
+          uses: actions/checkout@master
+            - name: Setup Node.js environment
+              uses: actions/setup-node@v1.4.2
+            - name: Setup Python
+              uses: actions/setup-python@v2
+            - name: Install yarn
+              run: sudo npm i -g yarn
+            - name: Cache node modules0
+              uses: actions/cache@v1
+              with:
+                path: node_modules
+                key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
+                restore-keys: |
+                  ${{ runner.OS }}-build-
+                  ${{ runner.OS }}-
+            - name: Install
+              run: yarn --ignore-optional
+            - name: document
+              run: npx compodoc -p tsconfig.app.json
+            - name: Deploy docs
+              if: github.ref == 'refs/heads/master'
+              env:
+                AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+              run: |
+                aws s3 cp \
+                  --recursive \
+                  --region ca-central-1 \
+                  documentation s3://devblog-landingpage-docs
