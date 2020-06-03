@@ -23,16 +23,14 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
-      - name: install yarn
-        run: sudo npm i -g yarn
       - name: Install
-        run: yarn
+        run: npm i
       - name: Lint
         if: github.ref == 'refs/heads/master'
-        run: yarn lint
+        run: npm run lint
       - name: Build
         if: github.ref == 'refs/heads/master'
-        run: yarn build
+        run: npm run build
       - name: Deploy front end
         if: github.ref == 'refs/heads/master'
         env:
