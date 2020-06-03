@@ -22,7 +22,6 @@
     "@angular/platform-browser-dynamic": "^9.1.0",
     "@angular/router": "^9.1.0",
     "@aws-amplify/ui-angular": "^0.2.6",
-    "@compodoc/compodoc": "^1.1.11",
     "@material-ui/core": "^4.9.14",
     "@ngrx/effects": "^9.1.2",
     "@ngrx/entity": "9.0.0",
