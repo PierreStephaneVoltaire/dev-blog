@@ -36,7 +36,7 @@ jobs:
         run: yarn lint
       - name: Build
         if: github.ref == 'refs/heads/master'
-        run: yarn build
+        run: yarn build --prod
       - name: Deploy front end
         if: github.ref == 'refs/heads/master'
         env:

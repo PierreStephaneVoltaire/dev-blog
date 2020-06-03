@@ -1,7 +1,7 @@
 <div class="main-card">
   <div class="posts">
 
-    <mat-card (click)="click(post.id)" *ngFor="let post of ($postList|async);index as i"
+    <mat-card *ngFor="let post of ($postList|async);index as i"   [routerLink]="['/post']" [queryParams]="{id: post.id}"
               class="post-card" matRipple>
       <mat-card-header class="card-header">
 
