@@ -7,7 +7,7 @@
   <pre *ngSwitchCase="Type.text" class="content">
     {{post.PostContent}}
   </pre>
-    <markdown *ngSwitchCase="Type.md" [src]="post.PostContent" ngPreserveWhitespaces>
+    <markdown *ngSwitchCase="Type.md" [src]="post.Meta.testContent" ngPreserveWhitespaces>
     </markdown>
     <markdown *ngSwitchDefault ngPreserveWhitespaces>
       # Markdown
