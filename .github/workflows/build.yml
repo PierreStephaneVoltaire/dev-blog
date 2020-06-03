@@ -70,7 +70,7 @@ jobs:
         - name: Install
           run: yarn --ignore-optional
         - name: document
-          run: npx compodoc -p tsconfig.app.json
+          run: npx @compodoc/compodoc -p tsconfig.compodoc.json
         - name: Deploy docs
           if: github.ref == 'refs/heads/master'
           env:
