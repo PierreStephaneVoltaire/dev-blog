@@ -7,21 +7,25 @@
 
 
         <mat-card-title class="card-title">
-          <a class="card-title-content "
-                [routerLink]="['/post']" [queryParams]="{id: post.id}"
-          >{{post.PostTitle}}</a>
-          <mat-chip-list class="tags" >
+          <div class="card-title-content">
+            <a [queryParams]="{id: post.id}"
+               [routerLink]="['/post']" class="card-title-content"
+            >{{post.PostTitle}}</a>
+
+          </div>
+
+          <div class="card-title-content">
+            <mat-chip-list class="tags">
            <span class="meta-title"> by    <mat-chip *ngIf="post.author" color="primary" selected>
               {{post.author}}
             </mat-chip>
             </span>
-           <span class="meta-title"> on  <mat-chip>  {{(post.UpdateDate ? post.UpdateDate : post.CreatedDate)|date}}
+              <span class="meta-title"> on  <mat-chip>  {{(post.UpdateDate ? post.UpdateDate : post.CreatedDate)|date}}
            </mat-chip></span>
 
 
-          </mat-chip-list>
-
-
+            </mat-chip-list>
+          </div>
         </mat-card-title>
 
         <mat-card-subtitle class="card-subtitle">
@@ -32,12 +36,12 @@
 
       </mat-card-header>
 
-      <mat-card-content class="card-content" [routerLink]="['/post']" [queryParams]="{id: post.id}">
-        <a class="content-text "
-           [routerLink]="['/post']" [queryParams]="{id: post.id}"
-        >
+      <mat-card-content class="card-content">
+        <a [queryParams]="{id: post.id}"
+           [routerLink]="['/post']" class="content-text "
+(click)="click"        >
           <markdown> > {{post.PostContent|slice: 0 :150}}</markdown>
-        </a>  </mat-card-content>
+        </a></mat-card-content>
       <mat-card-footer>
 
       </mat-card-footer>
