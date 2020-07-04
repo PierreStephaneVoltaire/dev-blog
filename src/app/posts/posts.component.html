@@ -38,8 +38,7 @@
 
       <mat-card-content class="card-content">
         <a [queryParams]="{id: post.id}"
-           [routerLink]="['/post']" class="content-text "
-(click)="click"        >
+           [routerLink]="['/post']" class="content-text " >
           <markdown> > {{post.PostContent|slice: 0 :150}}</markdown>
         </a></mat-card-content>
       <mat-card-footer>
