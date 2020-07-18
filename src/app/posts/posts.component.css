@@ -11,13 +11,13 @@
   width: calc(90vw) !important;}
 }
 .post-card {
-  width: calc(60vw);
+  width: calc(50vw);
   min-height: calc(100vh / 3.5);
   margin: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  border-radius: 25px;
+  border-radius: 4px;
   padding-left: 40px;
   cursor: pointer;
 
@@ -62,9 +62,14 @@ padding-bottom: 1em;}
 .meta-title {
   font-size: medium;
 }
-
+.mat-card-title{
+  margin-bottom: 20px;
+}
+.mat-standard-chip{
+  min-height: 22px !important;
+}
 .card-title-content {
-  padding: 5px !important;
+  padding: 5px 5px 20px 5px !important;
   font-size: 1.17em;
 }
 
