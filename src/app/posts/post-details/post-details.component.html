@@ -1,7 +1,7 @@
 <mat-card *ngIf="post$|async as post" class="detail-card">
   <mat-card-header>
     <mat-card-title class="post-title">{{post.PostTitle}}</mat-card-title>
-    <mat-card-subtitle>{{post.PostSubTitle}}</mat-card-subtitle>
+    <mat-card-subtitle class="post-subtitle">{{post.PostSubTitle}}</mat-card-subtitle>
   </mat-card-header>
   <mat-card-content *ngIf="post.Meta.type" [ngSwitch]="post.Meta.type">
   <pre *ngSwitchCase="Type.text" class="content">

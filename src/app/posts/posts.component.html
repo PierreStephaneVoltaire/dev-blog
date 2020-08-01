@@ -11,25 +11,17 @@
             <a [queryParams]="{id: post.id}"
                [routerLink]="['/post']" class="card-title-content"
             >{{post.PostTitle}}</a>
-
+            <span class="meta-title" *ngIf="post.author" >
+              {{post.author}}    •    </span>
+            <span class="meta-title">   {{(post.UpdateDate ? post.UpdateDate : post.CreatedDate)|date}}
+          </span>
           </div>
 
-          <div class="card-title-content">
-            <mat-chip-list class="tags">
-           <span class="meta-title"> by    <mat-chip *ngIf="post.author" color="primary" selected>
-              {{post.author}}
-            </mat-chip>
-            </span>
-              <span class="meta-title"> on  <mat-chip>  {{(post.UpdateDate ? post.UpdateDate : post.CreatedDate)|date}}
-           </mat-chip></span>
 
-
-            </mat-chip-list>
-          </div>
         </mat-card-title>
 
         <mat-card-subtitle class="card-subtitle">
-          {{post.PostSubTitle|slice: 0 :100}}
+       <span class="card-subtitle-content">   {{post.PostSubTitle|slice: 0 :100}} </span>
 
         </mat-card-subtitle>
 
