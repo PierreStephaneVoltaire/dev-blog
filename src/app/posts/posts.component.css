@@ -13,7 +13,7 @@
 .post-card {
   width: 800px;
   min-height: 480px;
-  margin: 12px;
+  margin: 0px 12px 12px 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -49,7 +49,6 @@
 
 }
   .card-title {
-    padding-top: 1em;
 
 
     display: flex;
